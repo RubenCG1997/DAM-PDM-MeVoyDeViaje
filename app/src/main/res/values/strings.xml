@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Me voy deviaje</string>
-    <string name="tv_destino">Destino:</string>
-    <string name="tv_transporte">Transporte:</string>
-    <string name="rb_primerDestino">París</string>
-    <string name="rb_segundoDestino">Londres</string>
-    <string name="rb_tercerDestino">Roma</string>
-    <string name="rb_primerTransporte">Coche</string>
-    <string name="rb_segundoTransporte">Tren</string>
-    <string name="rb_tercerTransporte">Avión</string>
+    <string name="lbl_Etiqueta1">Destino:</string>
+    <string name="lbl_Etiqueta2">Transporte:</string>
+    <string name="rb_Opcion11">París</string>
+    <string name="rb_Opcion12">Londres</string>
+    <string name="rb_Opcion13">Roma</string>
+    <string name="rb_Opcion21">Coche</string>
+    <string name="rb_Opcion22">Tren</string>
+    <string name="rb_Opcion23">Avión</string>
     <string name="btn_info">Información</string>
 </resources>

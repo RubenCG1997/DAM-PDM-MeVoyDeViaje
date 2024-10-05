@@ -16,37 +16,38 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_Destino"
+            android:id="@+id/lbl_Etiqueta1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tv_destino"
+            android:text="@string/lbl_Etiqueta1"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioGroup
-            android:id="@+id/rg_destino"
+            android:id="@+id/rg_Opciones1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginBottom="30dp">
 
             <RadioButton
-                android:id="@+id/rb_Primer_Destino"
+                android:id="@+id/rb_Opciones11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_primerDestino" />
+                android:checked="true"
+                android:text="@string/rb_Opcion11" />
 
             <RadioButton
-                android:id="@+id/rb_Segundo_Destino"
+                android:id="@+id/rb_Opciones12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_segundoDestino" />
+                android:text="@string/rb_Opcion12" />
 
             <RadioButton
-                android:id="@+id/rb_Tercer_Destino"
+                android:id="@+id/rb_Opciones13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_tercerDestino" />
+                android:text="@string/rb_Opcion13" />
         </RadioGroup>
     </LinearLayout>
     <LinearLayout
@@ -56,37 +57,38 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_Transporte"
+            android:id="@+id/lbl_Etiqueta2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tv_transporte"
+            android:text="@string/lbl_Etiqueta2"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioGroup
-            android:id="@+id/rg_transporte"
+            android:id="@+id/rg_Opciones2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginBottom="30dp">
 
             <RadioButton
-                android:id="@+id/rb_Primer_Transporte"
+                android:id="@+id/rb_Opcion21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_primerTransporte" />
+                android:checked="true"
+                android:text="@string/rb_Opcion21" />
 
             <RadioButton
-                android:id="@+id/rb_Segundo_Transporte"
+                android:id="@+id/rb_Opcion22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_segundoTransporte" />
+                android:text="@string/rb_Opcion22" />
 
             <RadioButton
-                android:id="@+id/rb_Tercer_Transporte"
+                android:id="@+id/rb_Opcion23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rb_tercerTransporte" />
+                android:text="@string/rb_Opcion23" />
         </RadioGroup>
     </LinearLayout>
 

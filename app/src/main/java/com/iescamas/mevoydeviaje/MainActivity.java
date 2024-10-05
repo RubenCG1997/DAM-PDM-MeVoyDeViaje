@@ -3,73 +3,53 @@ package com.iescamas.mevoydeviaje;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    RadioButton rb_PrimerDestino,rb_SegundoDestino,rb_TercerDestino;
-    RadioButton rb_PrimerTransporte,rb_SegundoTransporte,rb_TercerTransporte;
+
+    RadioGroup rg_Opciones1,rg_Opciones2;
+    RadioButton rb_opcion11,rb_opcion21;
     Button btn_info;
+    String dest="",transp="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rb_PrimerDestino = findViewById(R.id.rb_Primer_Destino);
-        rb_SegundoDestino = findViewById(R.id.rb_Segundo_Destino);
-        rb_TercerDestino = findViewById(R.id.rb_Tercer_Destino);
-        rb_PrimerTransporte = findViewById(R.id.rb_Primer_Transporte);
-        rb_SegundoTransporte = findViewById(R.id.rb_Segundo_Transporte);
-        rb_TercerTransporte = findViewById(R.id.rb_Tercer_Transporte);
+        rg_Opciones1 = findViewById(R.id.rg_Opciones1);
+        rg_Opciones2 = findViewById(R.id.rg_Opciones2);
+        rb_opcion11 = findViewById(R.id.rb_Opciones11);
+        rb_opcion21 = findViewById(R.id.rb_Opcion21);
         btn_info = findViewById(R.id.btn_info);
 
-        btn_info.setOnClickListener(view -> MostrarToast());
+        //Al iniciar tanto la opcion11 como opcion21 le asignamos a la variables su valor
+        dest=rb_opcion11.getText().toString();
+        transp=rb_opcion21.getText().toString();
+
+        //Comprobamos si se ha realizado algún cambio en el grupo 1
+        rg_Opciones1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                    dest = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
+            }
+        });
+        //Comprobamos si se ha realizado algún cambio en el grupo 2
+        rg_Opciones2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                    transp = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
+            }
+        });
+
+        btn_info.setOnClickListener(view ->Toast.makeText(MainActivity.this,"Me voy a "+dest+ " en "+transp,Toast.LENGTH_LONG).show());
 
     }
-    private void MostrarToast(){
 
-        String dest = "",transp = "";
-        if(rb_PrimerDestino.isChecked() && rb_PrimerTransporte.isChecked()){
-            dest = rb_PrimerDestino.getText().toString();
-            transp = rb_PrimerTransporte.getText().toString();
-        } else if (rb_PrimerDestino.isChecked() && rb_SegundoTransporte.isChecked()) {
-            dest = rb_PrimerDestino.getText().toString();
-            transp = rb_SegundoTransporte.getText().toString();
-        } else if (rb_PrimerDestino.isChecked() && rb_TercerTransporte.isChecked()) {
-            dest = rb_PrimerDestino.getText().toString();
-            transp = rb_TercerTransporte.getText().toString();
-        } else if (rb_SegundoDestino.isChecked() && rb_PrimerTransporte.isChecked()) {
-            dest = rb_SegundoDestino.getText().toString();
-            transp = rb_PrimerTransporte.getText().toString();
-        } else if (rb_SegundoDestino.isChecked() && rb_SegundoTransporte.isChecked()) {
-            dest = rb_SegundoDestino.getText().toString();
-            transp = rb_SegundoTransporte.getText().toString();
-        } else if (rb_SegundoDestino.isChecked() && rb_TercerTransporte.isChecked()) {
-            dest = rb_SegundoDestino.getText().toString();
-            transp = rb_TercerTransporte.getText().toString();
-        } else if (rb_TercerDestino.isChecked() && rb_PrimerTransporte.isChecked()) {
-            dest = rb_TercerDestino.getText().toString();
-            transp = rb_PrimerTransporte.getText().toString();
-        } else if (rb_TercerDestino.isChecked() && rb_SegundoTransporte.isChecked()) {
-            dest = rb_TercerDestino.getText().toString();
-            transp = rb_SegundoTransporte.getText().toString();
-        }  else if (rb_TercerDestino.isChecked() && rb_TercerTransporte.isChecked()) {
-            dest = rb_TercerDestino.getText().toString();
-            transp = rb_TercerTransporte.getText().toString();
-        }
-
-        if(dest.isEmpty() || transp.isEmpty()){
-            Toast.makeText(MainActivity.this,"Faltan campos por seleccionar",Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this,"Me voy a "+dest+ " en "+transp,Toast.LENGTH_LONG).show();
-        }
-    }
 }
