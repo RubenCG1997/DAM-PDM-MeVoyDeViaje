@@ -10,45 +10,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    RadioGroup rg_Opciones1,rg_Opciones2;
-    RadioButton rb_opcion11,rb_opcion21;
-    Button btn_info;
     String dest="",transp="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        rg_Opciones1 = findViewById(R.id.rg_Opciones1);
-        rg_Opciones2 = findViewById(R.id.rg_Opciones2);
-        rb_opcion11 = findViewById(R.id.rb_Opciones11);
-        rb_opcion21 = findViewById(R.id.rb_Opcion21);
-        btn_info = findViewById(R.id.btn_info);
-
-        //Al iniciar tanto la opcion11 como opcion21 le asignamos a la variables su valor
-        dest=rb_opcion11.getText().toString();
-        transp=rb_opcion21.getText().toString();
-
+        //Inicializamos el texto que debe salir al principio según el botón que esté seleccionado
+        int marcaGrupo1 = ((RadioGroup) findViewById(R.id.rg_Opciones1)).getCheckedRadioButtonId();
+        dest = marcaGrupo1 !=-1 ? ((RadioButton) findViewById(marcaGrupo1)).getText().toString() : "No se marco ningún boton";
+        //Inicializamos el texto que debe salir al principio según el botón que esté seleccionado
+        int marcaGrupo2 = ((RadioGroup) findViewById(R.id.rg_Opciones2)).getCheckedRadioButtonId();
+        transp = marcaGrupo2!=-1 ? ((RadioButton)findViewById(marcaGrupo2)).getText().toString() : "No se marco ningun botón";
         //Comprobamos si se ha realizado algún cambio en el grupo 1
-        rg_Opciones1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-                    dest = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
-            }
+        ((RadioGroup) findViewById(R.id.rg_Opciones1)).setOnCheckedChangeListener((radioGroup,i)-> {
+            dest = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
         });
         //Comprobamos si se ha realizado algún cambio en el grupo 2
-        rg_Opciones2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-                    transp = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
-            }
+        ((RadioGroup) findViewById(R.id.rg_Opciones2)).setOnCheckedChangeListener((radioGroup, i) ->  {
+            transp = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
         });
-
-        btn_info.setOnClickListener(view ->Toast.makeText(MainActivity.this,"Me voy a "+dest+ " en "+transp,Toast.LENGTH_LONG).show());
+        findViewById(R.id.btn_info).setOnClickListener(view ->Toast.makeText(MainActivity.this,"Me voy a "+dest+ " en "+transp,Toast.LENGTH_LONG).show());
 
     }
 
